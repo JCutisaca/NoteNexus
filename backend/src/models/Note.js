@@ -14,10 +14,24 @@ module.exports = (sequelize) => {
         tags: {
             type: DataTypes.ARRAY(DataTypes.STRING),
             allownull: true,
+            validate: {
+                isArrayOfStrings(value) {
+                    if (value && !Array.isArray(value)) {
+                        throw new Error('Tags must be an array');
+                    }
+                    if (value && value.some(item => typeof item !== 'string')) {
+                        throw new Error('All elements in the tags array must be strings');
+                    }
+                }
+            }
         },
         content: {
             type: DataTypes.STRING,
-            allownull: true,
+            allownull: false,
+        },
+        archived: {
+            type: DataTypes.BOOLEAN,
+            allownull: false
         }
     }, {
         timestamps: true

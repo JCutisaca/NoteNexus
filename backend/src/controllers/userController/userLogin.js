@@ -20,7 +20,7 @@ const userLogin = async ({ email, password }) => {
 
     const token = jwt.sign({ id, email }, JWT_SECRET)
 
-    return({idUser: id, token})
+    return({userId: id, token})
 }
 
 module.exports = userLogin;
