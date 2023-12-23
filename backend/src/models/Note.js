@@ -26,7 +26,7 @@ module.exports = (sequelize) => {
             }
         },
         content: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allownull: false,
         },
         archived: {

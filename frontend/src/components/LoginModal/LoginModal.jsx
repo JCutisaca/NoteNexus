@@ -3,11 +3,13 @@ import { validateEmail, validateName, validatePassword } from "../Validation/for
 import styles from '../Form/Form.module.css';
 import { loginUser } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 
 const LoginModal = ({setShowLoginForm}) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const [form, setForm] = useState({
         email: "",
@@ -40,6 +42,7 @@ const LoginModal = ({setShowLoginForm}) => {
             const response = await loginUser(form)(dispatch);
             if (response) {
                 window.alert(response.payload.userId);
+                navigate("/home")
             }
         } catch (error) {
             console.log(error);

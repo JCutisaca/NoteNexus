@@ -4,7 +4,7 @@ const getNoteById = require('./getNoteById');
 
 const updateNote = async ({ userId, id, title, tags, content, archived }) => {
     if (!userId || !id) throw Error("userId and id are required.");
-    if (!title && !tags && !content && archived !== undefined) throw Error("At least one of the following is required: title, tags, content, archived.");
+    if (!title && !tags && !content && archived === undefined) throw Error("At least one of the following is required: title, tags, content, archived.");
 
     const findNote = await getNoteById({ userId, id });
 
@@ -18,10 +18,8 @@ const updateNote = async ({ userId, id, title, tags, content, archived }) => {
     }, { where: { id } })
 
     await findNote.update(updateFields);
-
-    const newNoteUpdate = await getNoteById({ userId, id });
-
-    return newNoteUpdate
+    
+    return {message: "Note updated successfully."}
 }
 
 module.exports = updateNote;
