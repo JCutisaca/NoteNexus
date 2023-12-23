@@ -66,7 +66,7 @@ const LoginModal = ({setShowLoginForm}) => {
                 <input placeholder="Email" className={styles.loginemail} onBlur={handleBlurEmail} onChange={handleChange} type="text" value={form.email} name="email" />
                 {errors.email ? <p className={styles.warning}>{errors.email}</p> : <p>&nbsp;</p>}
 
-                <input placeholder="Password" className={styles.loginpass} onBlur={handleBlurPassword} onChange={handleChange} type="text" value={form.password} name="password" />
+                <input placeholder="Password" className={styles.loginpass} onBlur={handleBlurPassword} onChange={handleChange} type="password" value={form.password} name="password" />
                 {errors.password ? <p className={styles.warning}>{errors.password}</p> : <p>&nbsp;</p>}
 
                 <button disabled={!validateSubmit() || validateErrors()} className={styles.submit} type="submit">Login</button>
