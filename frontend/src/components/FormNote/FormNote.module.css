@@ -26,6 +26,7 @@
     justify-content: space-around;
     margin-top: 8px;
     height: 1.5rem;
+
 }
 
 .text input {
@@ -38,6 +39,7 @@
     top: 12px;
     right: 0;
 }
+
 .deleteIcon {
     position: absolute;
     top: 12px;
@@ -92,6 +94,8 @@
     margin-bottom: 5px;
     padding: 10px;
     height: 70%;
+    color: black;
+    padding-right: 25px;
 }
 
 .cardNote .footer {
@@ -104,9 +108,10 @@
     resize: none;
     width: 100%;
     font-size: 1rem;
+    padding: 0 8px;
     height: 100%;
     border: solid 1px;
-    background-image: linear-gradient(rgba(53,85,131,0.3) 0%, rgba(255,255,255,0.2) 8%), url(https://res.cloudinary.com/dvuhnhe50/image/upload/v1703282940/NoteNexus.png);
+    background-image: linear-gradient(rgba(53, 85, 131, 0.3) 0%, rgba(255, 255, 255, 0.2) 8%), url(https://res.cloudinary.com/dvuhnhe50/image/upload/v1703282940/NoteNexus.png);
     background-size: 100% 18px, 10% 10%;
 }
 
@@ -121,9 +126,9 @@
     flex-direction: row;
     overflow-x: auto;
     overflow-y: hidden;
-  }
-  
-  .tagButton {
+}
+
+.tagButton {
     padding: 0px 28px 0 12px;
     border: 1px solid #ccc;
     border-radius: 1.5rem;
@@ -131,38 +136,93 @@
     cursor: pointer;
     position: relative;
     height: 2rem;
-  }
-  
-  .autocompleteItem {
+}
+
+.autocompleteItem {
     padding: 8px;
     background-color: black;
     cursor: pointer;
-  }
-  
-  .autocompleteItem:hover {
-    background-color: #cda6a6;
-  }
+}
 
-  .tagsList {
+.autocompleteItem:hover {
+    background-color: #cda6a6;
+}
+
+.tagsList {
     width: 87%;
     max-height: 300px;
     overflow-y: auto;
     overflow-x: hidden;
     border: 1px solid #ccc;
     background-color: #fff;
-  }
-  .tagsAutocomplete {
-    width: 40%;
-  }
+}
 
-  .closeIcon {
+.tagsAutocomplete {
+    /* width: 40%; */
+    display: flex;
+}
+
+.closeIcon {
     position: absolute;
     right: 4px;
     top: 6px;
     cursor: pointer;
-  }
+}
 
-  .buttonAdd {
+.buttonAdd {
     height: 1.5rem;
-    width: 14%;
-  }
+    padding: 0 8px;
+    border-radius: 0 1.5rem 1.5rem 0;
+}
+
+.title {
+    padding: 0px 0px 0px 10px;
+    border-radius: 1.5rem;
+}
+
+.tagsInput {
+    border-radius: 1.5rem 0 0 1.5rem;
+    padding: 0px 0px 0px 10px;
+    width: 66%;
+}
+
+@media(max-width: 960px) {
+    .cardNote {
+        margin: 20px 0 0 0;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    /* .cardNote .content {
+        height: 67%;
+    } */
+
+    .cardNote {
+        height: 100%;
+    }
+}
+
+@media(max-width: 660px) {
+    .text {
+        margin-top: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .title {
+        padding: 3px 0px 3px 10px;
+    }
+
+    .cardNote .content {
+        height: 67%;
+    }
+}
+
+@media(max-width: 560px) {
+    .card {
+        width: 90%;
+    }
+}

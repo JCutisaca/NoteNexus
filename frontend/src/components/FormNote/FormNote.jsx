@@ -152,9 +152,9 @@ const FormNote = ({ setShowModal }) => {
                 <form onSubmit={handleSubmitUpdate} className={styles.cardNote}>
                     <div className={styles.cardHeader}>
                         <div className={styles.text}>
-                            <input maxLength={"24"} onChange={handleTittle} placeholder='Title' type="text" value={form.title} />
+                            <input className={styles.title} maxLength={"24"} onChange={handleTittle} placeholder='Title' type="text" value={form.title} />
                             <div className={styles.tagsAutocomplete}>
-                                <input maxLength={"20"} disabled={form?.tags?.length === 3} placeholder='Tags' type="text" value={inputValue} onChange={handleChange} />
+                                <input className={styles.tagsInput} maxLength={"20"} disabled={form?.tags?.length === 3} placeholder='Tags' type="text" value={inputValue} onChange={handleChange} />
                                 <button onKeyDown={handleEnter} className={styles.buttonAdd} disabled={form?.tags?.length === 3} type='' onClick={handleTag}>add</button>
                                 {filteredTags.length ? (
                                     <div className={styles.tagsList}>
@@ -195,9 +195,9 @@ const FormNote = ({ setShowModal }) => {
                 <form onSubmit={handleSubmit} className={styles.cardNote}>
                     <div className={styles.cardHeader}>
                         <div className={styles.text}>
-                            <input maxLength={"24"} onChange={handleTittle} placeholder='Title' type="text" value={form.title} />
+                            <input className={styles.title} maxLength={"24"} onChange={handleTittle} placeholder='Title' type="text" value={form.title} />
                             <div className={styles.tagsAutocomplete}>
-                                <input maxLength={"20"} disabled={form?.tags?.length === 3} placeholder='Tags' type="text" value={inputValue} onChange={handleChange} />
+                                <input className={styles.tagsInput} maxLength={"20"} disabled={form?.tags?.length === 3} placeholder='Tags' type="text" value={inputValue} onChange={handleChange} />
                                 <button onKeyDown={handleEnter} className={styles.buttonAdd} disabled={form?.tags?.length === 3} type='' onClick={handleTag}>add</button>
                                 {filteredTags.length ? (
                                     <div className={styles.tagsList}>
