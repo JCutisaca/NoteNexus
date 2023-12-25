@@ -1,14 +1,10 @@
-.container {
-    background-color: brown;
-    position: absolute;
-}
-
 .card {
     max-width: 55rem;
     width: 65%;
     height: 80%;
     top: 0rem;
     position: relative;
+    /* color: black; */
 }
 
 .cardNote {
@@ -218,12 +214,24 @@
     }
 
     .cardNote .content {
-        height: 67%;
+        height: 64%;
     }
 }
 
 @media(max-width: 560px) {
     .card {
         width: 90%;
+    }
+}
+
+@media(max-width: 400px) {
+    .cardNote .content {
+        height: 54%;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .textarea {
+        background-image: linear-gradient(rgba(255, 250, 250, 1) 0%, rgba(0, 0, 0, 0.8) 8%), url(https://res.cloudinary.com/dvuhnhe50/image/upload/v1703282940/NoteNexus.png);
     }
 }

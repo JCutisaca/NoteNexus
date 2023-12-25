@@ -84,9 +84,6 @@ export const getDetailNote = (userId, id) => {
         }
     }
 }
-// export const getDetailNote = (id) => {
-//     return { type: DETAIL_NOTE, payload: id }
-// }
 
 export const cleanDetail = (id) => {
     return { type: CLEAN_DETAIL, payload: [] }

@@ -7,21 +7,21 @@ export const validateName = (form, setErrors, errors) => {
     if (!name.length) {
         setErrors({
             ...errors,
-            name: "errors.nameEmpty"
+            name: "Name is required."
         })
         return;
     }
-    if (name.length < 5) {
+    if (name.length < 4) {
         setErrors({
             ...errors,
-            name: "errors.nameShort"
+            name: "Name should be at least 4 characters."
         })
         return;
     }
     if (!regexCharacters.test(name)) {
         setErrors({
             ...errors,
-            name: "errors.nameInvalid"
+            name: "Invalid characters."
         })
         return;
     } else {
@@ -37,14 +37,14 @@ export const validateEmail = (form, setErrors, errors) => {
     if (!email.length) {
         setErrors({
             ...errors,
-            email: "errors.emailEmpty"
+            email: "Email is required."
         })
         return;
     }
     if (!regexEmail.test(email)) {
         setErrors({
             ...errors,
-            email: "errors.emailInvalid"
+            email: "Invalid email address."
         })
         return;
     } else {
@@ -60,21 +60,21 @@ export const validatePassword = (form, setErrors, errors) => {
     if (!password) {
         setErrors({
             ...errors,
-            password: "errors.passwordEmpty"
+            password: "Password is required."
         })
         return;
     }
     if (password.length < 6) {
         setErrors({
             ...errors,
-            password: "errors.passwordShort"
+            password: "Password should be at least 6 characters."
         })
         return;
     }
     if (password.length > 14) {
         setErrors({
             ...errors,
-            password: "errors.passwordLong"
+            password: "Password should not exceed 14 characters."
         })
         return;
     } else {

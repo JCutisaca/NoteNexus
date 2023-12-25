@@ -4,6 +4,7 @@ import styles from '../Form/Form.module.css';
 import { loginUser } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const LoginModal = ({setShowLoginForm}) => {
@@ -46,6 +47,21 @@ const LoginModal = ({setShowLoginForm}) => {
             }
         } catch (error) {
             console.log(error);
+            const Toast = Swal.mixin({
+                toast: true,
+                position: "bottom-start",
+                showConfirmButton: false,
+                timer: 5000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.onmouseenter = Swal.stopTimer;
+                    toast.onmouseleave = Swal.resumeTimer;
+                }
+            });
+            Toast.fire({
+                icon: "error",
+                title: error?.response?.data?.error ? error.response.data.error : error.message,
+            });
         }
     }
 

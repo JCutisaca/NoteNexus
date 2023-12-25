@@ -8,9 +8,9 @@ import axios from 'axios'
 import store from './redux/store'
 const backend = import.meta.env.VITE_BACKEND_URL;
 
-axios.defaults.baseURL = backend;
+// axios.defaults.baseURL = backend;
 
-// axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = 'http://localhost:3001'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
