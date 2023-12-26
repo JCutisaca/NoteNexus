@@ -42,7 +42,6 @@ const LoginModal = ({setShowLoginForm}) => {
             event.preventDefault();
             const response = await loginUser(form)(dispatch);
             if (response) {
-                window.alert(response.payload.userId);
                 navigate("/home")
             }
         } catch (error) {

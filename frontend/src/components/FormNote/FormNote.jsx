@@ -10,6 +10,7 @@ const FormNote = ({ setShowModal }) => {
 
     const allTags = useSelector(state => state.allTags);
     const userId = useSelector(state => state.userId);
+    const access_token = useSelector(state => state.access_token);
     const detailNote = useSelector(state => state.detailNote);
 
     const dispatch = useDispatch();
@@ -85,8 +86,8 @@ const FormNote = ({ setShowModal }) => {
     const handleSubmit = async (event) => {
         try {
             event.preventDefault();
-            const response = await postNote({ ...form, userId });
-            dispatch(getAllNotesByUserId(userId))
+            const response = await postNote({ ...form, userId }, access_token);
+            dispatch(getAllNotesByUserId(userId, access_token))
             setShowModal(false)
             navigate("/home")
         } catch (error) {
@@ -97,8 +98,8 @@ const FormNote = ({ setShowModal }) => {
     const handleSubmitUpdate = async (event) => {
         try {
             event.preventDefault();
-            const response = await updateNote({ ...form, userId });
-            dispatch(getAllNotesByUserId(userId))
+            const response = await updateNote({ ...form, userId }, access_token);
+            dispatch(getAllNotesByUserId(userId, access_token))
             setShowModal(false)
             navigate("/home")
         } catch (error) {
@@ -112,7 +113,7 @@ const FormNote = ({ setShowModal }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await dispatch(getDetailNote(userId, id));
+                const response = await dispatch(getDetailNote(userId, id, access_token));
                 setForm(response.payload)
             } catch (error) {
                 setShowModal(false)

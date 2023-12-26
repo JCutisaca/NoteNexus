@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 const CardNote = ({ id, title, tags, content, archived, createdAt, updatedAt }) => {
     const userId = useSelector(state => state.userId);
+    const access_token = useSelector(state => state.access_token);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -35,8 +36,8 @@ const CardNote = ({ id, title, tags, content, archived, createdAt, updatedAt }) 
                 confirmButtonText: "Yes, delete it!"
             });
             if (result.isConfirmed) {
-                await deleteNote(userId, id);
-                dispatch(getAllNotesByUserId(userId));
+                await deleteNote(userId, id, access_token);
+                dispatch(getAllNotesByUserId(userId, access_token));
                 Swal.fire({
                     title: "Deleted!",
                     text: "Your Note has been deleted.",
@@ -59,8 +60,8 @@ const CardNote = ({ id, title, tags, content, archived, createdAt, updatedAt }) 
             id,
             archived: !archived
         }
-        await updateNote(form)
-        dispatch(getAllNotesByUserId(userId));
+        await updateNote(form, access_token)
+        dispatch(getAllNotesByUserId(userId, access_token));
     }
 
     const handleRemoveTag = async (tag) => {
@@ -71,7 +72,7 @@ const CardNote = ({ id, title, tags, content, archived, createdAt, updatedAt }) 
             tags: newTags
         }
         await updateNote(form)
-        dispatch(getAllNotesByUserId(userId));
+        dispatch(getAllNotesByUserId(userId, access_token));
     }
 
     return (

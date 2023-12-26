@@ -10,6 +10,7 @@ const Home = () => {
     const dispatch = useDispatch()
 
     const userId = useSelector(state => state.userId);
+    const access_token = useSelector(state => state.access_token);
     const allNotes = useSelector(state => state.allNotes);
     const allNotesCopy = useSelector(state => state.allNotesCopy);
 
@@ -20,7 +21,7 @@ const Home = () => {
     const visibleNotes = allNotes?.slice(startIndex, startIndex + itemsPerPage);
 
     useEffect(() => {
-        dispatch(getAllNotesByUserId(userId))
+        dispatch(getAllNotesByUserId(userId, access_token))
         window.scrollTo(0, 0);
     }, [])
 

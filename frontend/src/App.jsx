@@ -13,13 +13,13 @@ const App = () => {
   const location = useLocation().pathname;
   return (
     <>
-      {(location !== "/" && userId) && <NavBar></NavBar>}
+      {(location !== "/" && userId.length) && <NavBar></NavBar>}
       <Routes>
         <Route path='/' element={<Form />}></Route>
-        <Route path='/home' element={userId ? <Home /> : <Navigate to={"/"}></Navigate>}></Route>
-        <Route path='/archived' element={userId ? <ArchivedNotes /> : <Navigate to={"/"}></Navigate>}></Route>
-        <Route path='/note/create' element={userId ? <DetailCard /> : <Navigate to={"/"}></Navigate>}></Route>
-        <Route path='/note/:id' element={userId ? <DetailCard /> : <Navigate to={"/"}></Navigate>}></Route>
+        <Route path='/home' element={userId.length ? <Home /> : <Navigate to={"/"}></Navigate>}></Route>
+        <Route path='/archived' element={userId.length ? <ArchivedNotes /> : <Navigate to={"/"}></Navigate>}></Route>
+        <Route path='/note/create' element={userId.length ? <DetailCard /> : <Navigate to={"/"}></Navigate>}></Route>
+        <Route path='/note/:id' element={userId.length ? <DetailCard /> : <Navigate to={"/"}></Navigate>}></Route>
       </Routes>
     </>
   )

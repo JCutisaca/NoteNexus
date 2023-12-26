@@ -10,6 +10,8 @@ const ArchivedNotes = () => {
     const dispatch = useDispatch()
 
     const userId = useSelector(state => state.userId);
+    const access_token = useSelector(state => state.access_token);
+
     const allNotesArchived = useSelector(state => state.allNotesArchived);
     const allNotesArchivedCopyArchived = useSelector(state => state.allNotesArchivedCopyArchived);
 
@@ -20,7 +22,7 @@ const ArchivedNotes = () => {
     const visibleNotes = allNotesArchived?.slice(startIndex, startIndex + itemsPerPage);
 
     useEffect(() => {
-        dispatch(getAllNotesByUserId(userId))
+        dispatch(getAllNotesByUserId(userId, access_token))
         window.scrollTo(0, 0);
     }, [])
 

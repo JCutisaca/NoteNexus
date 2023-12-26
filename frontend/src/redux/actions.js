@@ -26,10 +26,15 @@ export const loginUser = (form) => {
     }
 }
 
-export const getAllNotesByUserId = (userId) => {
+export const getAllNotesByUserId = (userId, access_token) => {
     return async (dispath) => {
         try {
-            const { data } = await axios(`/note/user/${userId}`)
+            const config = {
+                headers: {
+                    authorization: `Bearer ${access_token}`
+                }
+            }
+            const { data } = await axios(`/note/user/${userId}`, config)
             return dispath({ type: ALL_NOTES, payload: data })
         } catch (error) {
             return Promise.reject(error);
@@ -37,9 +42,14 @@ export const getAllNotesByUserId = (userId) => {
     }
 }
 
-export const postNote = async (form) => {
+export const postNote = async (form, access_token) => {
     try {
-        const { data } = await axios.post('/note/create', form)
+        const config = {
+            headers: {
+                authorization: `Bearer ${access_token}`
+            }
+        }
+        const { data } = await axios.post('/note/create', form, config)
         if (data.message) {
             return data.message;
         }
@@ -48,9 +58,14 @@ export const postNote = async (form) => {
     }
 }
 
-export const updateNote = async (form) => {
+export const updateNote = async (form, access_token) => {
     try {
-        const { data } = await axios.put('/note/update', form)
+        const config = {
+            headers: {
+                authorization: `Bearer ${access_token}`
+            }
+        }
+        const { data } = await axios.put('/note/update', form, config)
         if (data.message) {
             return data.message;
         }
@@ -59,9 +74,14 @@ export const updateNote = async (form) => {
     }
 }
 
-export const deleteNote = async (userId, id) => {
+export const deleteNote = async (userId, id, access_token) => {
     try {
-        const { data } = await axios.delete(`/note/delete/${userId}/${id}`)
+        const config = {
+            headers: {
+                authorization: `Bearer ${access_token}`
+            }
+        }
+        const { data } = await axios.delete(`/note/delete/${userId}/${id}`, config)
         if (data.message) {
             return data.message;
         }
@@ -74,10 +94,15 @@ export const logoutUser = () => {
     return { type: LOGOUT_USER, payload: [] }
 }
 
-export const getDetailNote = (userId, id) => {
+export const getDetailNote = (userId, id, access_token) => {
     return async (dispath) => {
         try {
-            const { data } = await axios(`/note/${userId}/${id}`)
+            const config = {
+                headers: {
+                    authorization: `Bearer ${access_token}`
+                }
+            }
+            const { data } = await axios(`/note/${userId}/${id}`, config)
             return dispath({ type: DETAIL_NOTE, payload: data })
         } catch (error) {
             return Promise.reject(error);
